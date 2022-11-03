@@ -1,0 +1,2 @@
+on init
+    insmod /vendor/lib/modules/mn88436_fe.ko

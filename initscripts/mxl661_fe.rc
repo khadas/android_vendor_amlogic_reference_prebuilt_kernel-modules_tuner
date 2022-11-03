@@ -1,0 +1,2 @@
+on init
+    insmod /vendor/lib/modules/mxl661_fe.ko

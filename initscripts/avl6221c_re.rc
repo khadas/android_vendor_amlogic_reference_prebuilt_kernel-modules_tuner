@@ -1,0 +1,2 @@
+on init
+    insmod /vendor/lib/modules/avl6221c_re.ko

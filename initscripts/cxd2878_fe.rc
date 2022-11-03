@@ -1,0 +1,2 @@
+on init
+    insmod /vendor/lib/modules/cxd2878_fe.ko

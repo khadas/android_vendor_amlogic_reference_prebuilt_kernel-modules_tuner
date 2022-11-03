@@ -1,0 +1,2 @@
+on init
+    insmod /vendor/lib/modules/r840_fe.ko

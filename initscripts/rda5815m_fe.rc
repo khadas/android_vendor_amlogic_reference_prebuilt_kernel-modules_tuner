@@ -1,0 +1,2 @@
+on init
+    insmod /vendor/lib/modules/rda5815m_fe.ko

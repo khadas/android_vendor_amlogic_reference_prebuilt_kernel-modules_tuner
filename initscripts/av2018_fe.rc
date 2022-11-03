@@ -1,0 +1,2 @@
+on init
+    insmod /vendor/lib/modules/av2018_fe.ko
