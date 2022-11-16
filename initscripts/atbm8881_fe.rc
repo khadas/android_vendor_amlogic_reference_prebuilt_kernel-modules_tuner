@@ -1,2 +1,4 @@
 on init
     insmod /vendor/lib/modules/atbmr8881_fe.ko
+    write /sys/class/aml_dvb_extern/demod_debug "attach"
+    write /sys/class/aml_dvb_extern/demod_debug "register"
