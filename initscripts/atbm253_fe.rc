@@ -1,4 +1,2 @@
-on init
-    insmod /vendor/lib/modules/atbm253_fe.ko
 on post-fs-data
-    write /sys/class/aml_dvb_extern/demod_debug "attach"
+    insmod /vendor/lib/modules/atbm253_fe.ko

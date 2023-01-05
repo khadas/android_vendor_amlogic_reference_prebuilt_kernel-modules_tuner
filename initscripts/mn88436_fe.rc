@@ -1,3 +1,2 @@
-on post-fs-data
+on late-fs
     insmod /vendor/lib/modules/mn88436_fe.ko
-    write /sys/class/aml_dvb_extern/demod_debug "attach"
