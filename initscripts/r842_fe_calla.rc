@@ -1,0 +1,2 @@
+on post-fs-data
+    insmod /vendor/lib/modules/r842_fe.ko r842_common_agc=1
