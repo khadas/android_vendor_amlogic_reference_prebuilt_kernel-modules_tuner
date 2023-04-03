@@ -28,6 +28,9 @@ ifeq ($(TARGET_BUILD_KERNEL_VERSION),5.15)
     ifeq ($(PRODUCT_DIR), calla)
         PRODUCT_COPY_FILES += $(LOCAL_PATH)/initscripts/r842_fe_calla.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/r842_fe.rc
     endif
+    ifeq ($(PRODUCT_DIR), anemone)
+        PRODUCT_COPY_FILES += $(LOCAL_PATH)/initscripts/r842_fe_calla.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/r842_fe.rc
+    endif
 	ifeq ($(TARGET_BUILD_KERNEL_USING_14_5.15), true)
 	    PRODUCT_COPY_FILES += $(foreach tuner, $(TUNER_MODULE),\
         $(if $(findstring true, $(KERNEL_A32_SUPPORT)),\
