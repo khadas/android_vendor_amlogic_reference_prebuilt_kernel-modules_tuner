@@ -22,7 +22,7 @@
 #======================================================================================
 
 ifneq ($(strip $(TUNER_MODULE)),)
-$(warning TUNER_MODULE is $(TUNER_MODULE))
+
 LOCAL_PATH := vendor/amlogic/reference/prebuilt/kernel-modules/tuner
 ifeq ($(TARGET_BUILD_KERNEL_VERSION),5.15)
     ifeq ($(PRODUCT_DIR), calla)
