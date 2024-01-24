@@ -31,18 +31,26 @@ ifeq ($(TARGET_BUILD_KERNEL_VERSION),5.15)
     ifeq ($(PRODUCT_DIR), anemone)
         PRODUCT_COPY_FILES += $(LOCAL_PATH)/initscripts/r842_fe_calla.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/r842_fe.rc
     endif
-	ifeq ($(TARGET_BUILD_KERNEL_USING_14_5.15), true)
-	    PRODUCT_COPY_FILES += $(foreach tuner, $(TUNER_MODULE),\
-        $(if $(findstring true, $(KERNEL_A32_SUPPORT)),\
-            $(LOCAL_PATH)/32/14_5.15/$(tuner)_fe_32.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko,\
-            $(LOCAL_PATH)/64/14_5.15/$(tuner)_fe_64.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko)\
-            $(LOCAL_PATH)/initscripts/$(tuner)_fe.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/$(tuner)_fe.rc)
+    ifeq ($(TARGET_BUILD_KERNEL_USING_14_5.15), true)
+        ifeq ($(TARGET_OLD_DEVICE), true)
+        PRODUCT_COPY_FILES += $(foreach tuner, $(TUNER_MODULE),\
+            $(if $(findstring true, $(KERNEL_A32_SUPPORT)),\
+                $(LOCAL_PATH)/32/14_5.15/$(tuner)_fe_32.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko,\
+                $(LOCAL_PATH)/64/14_5.15_upgrade/$(tuner)_fe_64.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko)\
+                $(LOCAL_PATH)/initscripts/$(tuner)_fe.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/$(tuner)_fe.rc)
+        else
+        PRODUCT_COPY_FILES += $(foreach tuner, $(TUNER_MODULE),\
+            $(if $(findstring true, $(KERNEL_A32_SUPPORT)),\
+                $(LOCAL_PATH)/32/14_5.15/$(tuner)_fe_32.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko,\
+                $(LOCAL_PATH)/64/14_5.15/$(tuner)_fe_64.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko)\
+                $(LOCAL_PATH)/initscripts/$(tuner)_fe.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/$(tuner)_fe.rc)
+        endif
     else
-	    PRODUCT_COPY_FILES += $(foreach tuner, $(TUNER_MODULE),\
-        $(if $(findstring true, $(KERNEL_A32_SUPPORT)),\
-            $(LOCAL_PATH)/32/13_5.15/$(tuner)_fe_32.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko,\
-            $(LOCAL_PATH)/64/13_5.15/$(tuner)_fe_64.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko)\
-            $(LOCAL_PATH)/initscripts/$(tuner)_fe.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/$(tuner)_fe.rc)
+        PRODUCT_COPY_FILES += $(foreach tuner, $(TUNER_MODULE),\
+            $(if $(findstring true, $(KERNEL_A32_SUPPORT)),\
+                $(LOCAL_PATH)/32/13_5.15/$(tuner)_fe_32.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko,\
+                $(LOCAL_PATH)/64/13_5.15/$(tuner)_fe_64.ko:$(PRODUCT_OUT)/obj/lib_vendor/$(tuner)_fe.ko)\
+                $(LOCAL_PATH)/initscripts/$(tuner)_fe.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/$(tuner)_fe.rc)
     endif
 else
     PRODUCT_COPY_FILES += $(foreach tuner, $(TUNER_MODULE),\
